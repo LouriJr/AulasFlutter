@@ -9,8 +9,9 @@ import 'package:flutter/material.dart';
 
 class CardUniversidade extends StatelessWidget {
   final Universidade universidade;
+  final bool melhoresAvaliacoes;
 
-  CardUniversidade(this.universidade);
+  CardUniversidade(this.universidade, this.melhoresAvaliacoes);
 
   @override
   Widget build(BuildContext context) {
@@ -24,25 +25,24 @@ class CardUniversidade extends StatelessWidget {
         ));
 
     final conteudoCard = new Container(
-      margin: new EdgeInsets.fromLTRB(42, 16.0, 16.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(30, 16.0, 16.0, 16.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(height: 4.0),
-          new Text(universidade.name, style: Style.titleTextStyle),
+          new Text("       " + universidade.name, style: Style.titleTextStyle),
           new Container(
-              child: new Row(
-                  children: <Widget>[
-                    ButtonBar(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        LikeButton(),
-                        DislikeButton(),
-                        ReportButton(universidade)
-                      ],
-                    )
-                  ])),
+              child: new Row(children: <Widget>[
+            ButtonBar(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                LikeButton(this.universidade, this.melhoresAvaliacoes),
+                DislikeButton(this.universidade, this.melhoresAvaliacoes),
+                ReportButton(universidade)
+              ],
+            )
+          ])),
         ],
       ),
     );
@@ -50,7 +50,7 @@ class CardUniversidade extends StatelessWidget {
     final universidadeCard = new Container(
       child: conteudoCard,
       height: 150.0,
-      margin: new EdgeInsets.only(left: 46.0),
+      margin: new EdgeInsets.only(left: 30.0),
       decoration: new BoxDecoration(
         color: new Color.fromRGBO(44, 0, 62, 1),
         shape: BoxShape.rectangle,
@@ -66,25 +66,13 @@ class CardUniversidade extends StatelessWidget {
     );
 
     return new GestureDetector(
-        // onTap: horizontal
-        //     ? () => Navigator.of(context).push(
-        //       new PageRouteBuilder(
-        //         pageBuilder: (_, __, ___) => new DetailPage(planet),
-        //         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
-        //           new FadeTransition(opacity: animation, child: child),
-        //         ) ,
-        //       )
-        //     : null,
         child: new Container(
       margin: const EdgeInsets.symmetric(
         vertical: 16.0,
         horizontal: 24.0,
       ),
       child: new Stack(
-        children: <Widget>[
-          universidadeCard,
-          universidadeThumbnail
-        ],
+        children: <Widget>[universidadeCard, universidadeThumbnail],
       ),
     ));
   }

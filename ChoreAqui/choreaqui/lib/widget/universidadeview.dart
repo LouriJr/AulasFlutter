@@ -74,15 +74,7 @@ class UniversidadeView extends StatelessWidget {
       ),
     );
 
-    return new GestureDetector(
-        onTap: () {
-          print("Container clicked");
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Reclamacao(universidade)));
-        },
-        child: new Container(
+    return new Container(
           margin: const EdgeInsets.symmetric(
             horizontal: 24.0,
           ),
@@ -93,6 +85,6 @@ class UniversidadeView extends StatelessWidget {
               BotaoEnviar()
             ],
           ),
-        ));
+        );
   }
 }

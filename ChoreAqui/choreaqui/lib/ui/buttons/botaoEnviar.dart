@@ -1,5 +1,7 @@
+import 'package:choreaqui/main.dart';
 import 'package:choreaqui/views/reclamacao.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BotaoEnviar extends StatelessWidget {
   @override
@@ -12,7 +14,22 @@ class BotaoEnviar extends StatelessWidget {
                   style: TextStyle(color: Colors.white, fontSize: 20.0)),
               color: Color.fromRGBO(44, 0, 62, 1),
               highlightColor: Color.fromRGBO(81, 43, 88, 1),
-              onPressed: () {})),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Menu()));
+                    message();
+              })),
     );
   }
+}
+
+message() {
+  Fluttertoast.showToast(
+      msg: "Reclamação enviada com sucesso",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Color.fromRGBO(44, 0, 62, 1),
+      textColor: Colors.white,
+      fontSize: 16.0);
 }

@@ -11,12 +11,16 @@ class Reclamacao extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
         home: Scaffold(
             backgroundColor: Color.fromRGBO(81, 43, 88, 1),
-            body: Column(
-              children: <Widget>[Logo(), UniversidadeView(universidade)],
-            ),
+            body: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[Logo(), UniversidadeView(universidade)],
+              ),
+            )),
             appBar: AppBar(
                 elevation: 0.0,
                 title: Text('Chore aqui!'),

@@ -1,9 +1,23 @@
 import 'package:choreaqui/ui/logo.dart';
 import 'package:flutter/material.dart';
 import 'ui/buttons/botaoRanking.dart';
+import './app_database.dart';
 
 void main() {
   runApp(Menu());
+  new FutureBuilder<String>(
+      future: resetDB(), // async work
+      builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return new Text('Loading....');
+          default:
+            if (snapshot.hasError)
+              return new Text('Error: ${snapshot.error}');
+            else
+              return new Text('Reset occured: ${snapshot.data}');
+        }
+      });
 }
 
 class Menu extends StatelessWidget {

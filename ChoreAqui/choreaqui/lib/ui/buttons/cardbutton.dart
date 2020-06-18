@@ -23,14 +23,5 @@ class CardButton extends StatelessWidget {
       ],
     );
 
-    // return CircleAvatar(
-
-    //   radius: 30,
-    //   backgroundColor: Color.fromRGBO(28, 28, 28, 1),
-    //   child: IconButton(
-    //     icon: icon,
-    //     onPressed: () {},
-    //   ),
-    // );
   }
 }
